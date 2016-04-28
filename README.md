@@ -1,6 +1,8 @@
 # fmdatabase
 简单的创建database和对database进行增删改查的操作
-
+<p>
+项目操作前,先导入fmdb第三方库
+</p>
 1.首先创建数据库
 <pre><code>
 {
@@ -35,7 +37,7 @@
     [_dataBase close];
     }
     </code></pre>
-    ***
+    
     2.增删改查
  <pre><code>
     {-(void)insert//插入数据
