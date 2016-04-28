@@ -37,7 +37,7 @@
     </code></pre>
     ***
     2.增删改查
-    <pre><code>
+ <pre><code>
     {-(void)insert//插入数据
 {
     NSString *insertSQL=@"insert into Person (name,age) values (?,?)";
@@ -77,4 +77,5 @@
     }else{
         NSLog(@"选择失败");
     }
-}} </code></pre>
+}} 
+</code></pre>
