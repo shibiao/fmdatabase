@@ -2,7 +2,7 @@
 简单的创建database和对database进行增删改查的操作
 
 1.首先创建数据库
-'
+`
     //1.创建数据库
     //ios数据库一般会保存在沙盒文件的Documents中
     NSArray *documents=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -31,9 +31,9 @@
     [self update];
     [self delete];
     //关闭数据库
-    [_dataBase close];'
+    [_dataBase close];`
     2.增删改查
-    '-(void)insert//插入数据
+    `-(void)insert//插入数据
 {
     NSString *insertSQL=@"insert into Person (name,age) values (?,?)";
     BOOL success=[_dataBase executeUpdate:insertSQL,@"王五",@19];
@@ -72,4 +72,4 @@
     }else{
         NSLog(@"选择失败");
     }
-}'
+}`
