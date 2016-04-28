@@ -49,13 +49,14 @@
     [self insert];
     [self update];
     [self delete];
+    [self select];
     //关闭数据库
     [_dataBase close];
 }
 -(void)insert//插入数据
 {
     NSString *insertSQL=@"insert into Person (name,age) values (?,?)";
-    BOOL success=[_dataBase executeUpdate:insertSQL,@"王五",@19];
+    BOOL success=[_dataBase executeUpdate:insertSQL,@"刘四",@19];
     if (success) {
         NSLog(@"插入成功");
     }else{
@@ -82,15 +83,20 @@
         NSLog(@"删除失败");
     }
 }
--(void)select//选择数据
+-(void)select//查询数据
 {
-    NSString *selectSQL=@"select name,age from Person";
-    BOOL success=[_dataBase executeUpdate:selectSQL];
-    if (success) {
-        NSLog(@"选择成功");
-    }else{
-        NSLog(@"选择失败");
-    }
+    NSString *selectSQL=@"select * from Person where id =?";
+    //查询返回的为一个结果集
+    
+    FMResultSet *set=[_dataBase executeQuery:selectSQL,@5];
+    
+    //需要对结果集进行遍历操作
+    
+    [set next];//获取吓一跳记录,如果没有下一条,返回NO;
+    //取数据
+    NSString *name=[set stringForColumn:@"name"];
+    NSInteger ID=[set intForColumn:@"id"];
+    NSLog(@"%@,ID=%ld",name,ID);
 }
 
 - (void)didReceiveMemoryWarning {
